@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using RecipesProjects.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,18 +12,35 @@ namespace RecipesProjects.Controllers
 {
     public class HomeController : Controller
     {
+        UserInput userChoice = new UserInput();
+        
         public ActionResult Index()
         {
-            return View();
+            
+            return View(userChoice);
+        }
+        [HttpPost]
+        public ActionResult Index(UserInput userChoice)
+        {
+            if (Session["UserInput"] != null)
+            {
+                userChoice = (UserInput)Session["UserInput"];
+            }
+            else
+            {
+                Session["UserInput"] = userChoice;
+            }
+                   
+                return RedirectToAction("About");
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-             JToken var = Recipes();
+            userChoice =(UserInput) Session["UserInput"];
 
-
-            return View();
+            MovieAPI obj = new MovieAPI();
+            obj = MovieDAL.GetPost("http://www.omdbapi.com/?" + "t="+userChoice.MovieName+"&apikey=70a772b9&");
+            return View(obj);
         }
 
         public ActionResult Contact()
@@ -46,19 +64,7 @@ namespace RecipesProjects.Controllers
         {
             return View();
         }
-
-        public JToken Recipes()
-        {
-            HttpWebRequest request = WebRequest.CreateHttp("https://developer.edamam.com/");
-            request.Headers.Add("1f3aa5eb", "a1d0eb045f18e2e5bf9a9bab2ae6cbe4");
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            StreamReader rd = new StreamReader(response.GetResponseStream());
-            string data = rd.ReadToEnd();
-            JToken anything = JToken.Parse(data);
-
-            return anything;
-        }
-
+        
 
     }
 
