@@ -1,17 +1,34 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact NEK";
 }
-<h2>@ViewBag.Title.</h2>
+@*<h2>@ViewBag.Title.</h2>*@
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div class="container">
+    <form action="action_page.php">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Enter your first name">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Enter your last name">
+        <label for="Email">Email</label>
+        <input type="text" id="email" name="email" placeholder="Enter your email address">
+
+        <label for="country">Country</label>
+        <select id="country" name="country">
+         <option value="canada">Canada</option>
+            <option value="usa">USA</option>
+        </select>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+
+@*</div><address>
+    Diamond Way<br />
+    Evansville, NohaMexico 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    555.555.5555
+</address>*@
+
