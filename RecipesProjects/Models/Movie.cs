@@ -1,3 +1,4 @@
+<<<<<<< HEAD:RecipesProjects/Models/Movie.cs
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,21 @@ namespace RecipesProjects.Models
 
         public int ID { get; set; }
         [Key]
+=======
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+namespace RecipesProjects.Models
+{
+    public class MovieAPI
+    {
+        public int ID { get; set; }
+        
+>>>>>>> 6c3931d68d44b1d7b1839bf115d5099b32a40b3f:RecipesProjects/Models/MovieAPI.cs
         public string Title { get; set; }
         public string Year { get; set; }
         public string Rated { get; set; }
@@ -37,7 +53,7 @@ namespace RecipesProjects.Models
         {
             //JObject movieJson = JObject.Parse(APIText);
             JToken movieInfo = JToken.Parse(APIText);
-
+         
             Title = movieInfo["Title"].ToString();
             Year = movieInfo["Year"].ToString();
             Rated = movieInfo["Rated"].ToString();

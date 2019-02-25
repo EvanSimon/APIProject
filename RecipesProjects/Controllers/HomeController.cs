@@ -22,9 +22,15 @@ namespace RecipesProjects.Controllers
         [HttpPost]
         public ActionResult Index(UserInput userChoice)
         {
+<<<<<<< HEAD
             Session["UserInput"] = userChoice;
 
             return RedirectToAction("About");
+=======
+             Session["UserInput"] = userChoice;
+              
+                return RedirectToAction("About");
+>>>>>>> 6c3931d68d44b1d7b1839bf115d5099b32a40b3f
         }
 
         public ActionResult About()
