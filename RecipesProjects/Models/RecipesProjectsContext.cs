@@ -19,6 +19,6 @@ namespace RecipesProjects.Models
         {
         }
 
-        public System.Data.Entity.DbSet<RecipesProjects.Models.MovieAPI> MovieAPIs { get; set; }
+        public System.Data.Entity.DbSet<RecipesProjects.Models.Movie> MovieAPIs { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace RecipesProjects.Controllers
     public class HomeController : Controller
     {
         UserInput userChoice = new UserInput();
-        private DBItemContext db = new DBItemContext();
+        private DBMovieContext db = new DBMovieContext();
         public ActionResult Index()
         {
             
@@ -22,28 +22,26 @@ namespace RecipesProjects.Controllers
         [HttpPost]
         public ActionResult Index(UserInput userChoice)
         {
-            if (Session["UserInput"] != null)
-            {
-                userChoice = (UserInput)Session["UserInput"];
-            }
-            else
-            {
-                Session["UserInput"] = userChoice;
-            }
-                   
-                return RedirectToAction("About");
+            Session["UserInput"] = userChoice;
+
+            return RedirectToAction("About");
         }
 
         public ActionResult About()
         {
             userChoice =(UserInput) Session["UserInput"];
 
-            MovieAPI obj = new MovieAPI();
-            string Movename = userChoice.MovieName.Trim();
-            obj = MovieDAL.GetPost("http://www.omdbapi.com/?" + "t="+Movename+ "&apikey=70a772b9&");
-            db.MovieAPIs.Add(obj);
-            db.SaveChanges();
-            return View(obj);
+            if(userChoice == null)
+            {
+                Movie obj = new Movie();
+                string Movename = userChoice.MovieName.Trim();
+                obj = MovieDAL.GetPost("http://www.omdbapi.com/?s" + "t="+ Movename + "&apikey=70a772b9&");
+                db.Movies.Add(obj);
+                db.SaveChanges();
+                return View(obj);
+            }
+
+            return View();
         }
 
         public ActionResult Contact()
@@ -52,23 +50,5 @@ namespace RecipesProjects.Controllers
 
             return View();
         }
-
-        public ActionResult Breakfast()
-        {
-            return View();
-        }
-
-        public ActionResult Lunch()
-        {
-            return View();
-        }
-
-        public ActionResult Dinner()
-        {
-            return View();
-        }
-        
-
     }
-
 }

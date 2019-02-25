@@ -133,12 +133,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MovieAPIs1Controller.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="DBItemContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\MovieAPI.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieDAL.cs" />
     <Compile Include="Models\RecipesProjectsContext.cs" />
     <Compile Include="Models\UserInput.cs" />
@@ -188,6 +188,11 @@
     <Content Include="Views\MovieAPIs1\Details.cshtml" />
     <Content Include="Views\MovieAPIs1\Edit.cshtml" />
     <Content Include="Views\MovieAPIs1\Index.cshtml" />
+    <Content Include="Views\Movies\Create.cshtml" />
+    <Content Include="Views\Movies\Delete.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Movies\Edit.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

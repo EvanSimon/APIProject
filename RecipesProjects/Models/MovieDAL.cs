@@ -23,10 +23,10 @@ namespace RecipesProjects.Models
             return APIText;
         }
        
-        public static MovieAPI GetPost(string Url)
+        public static Movie GetPost(string Url)
         {
             string APIText = GetData(Url);
-            MovieAPI movieObj = new MovieAPI(APIText);
+            Movie movieObj = new Movie(APIText);
             return movieObj;
         }
        
